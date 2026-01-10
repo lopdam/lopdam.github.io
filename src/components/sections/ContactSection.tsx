@@ -54,7 +54,7 @@ export function ContactSection() {
                   </p>
                 </div>
 
-                <div className="pt-8 pb-4">
+                <div className="pb-4">
                   <Dock direction="middle">
                     <DockIcon>
                       <a
