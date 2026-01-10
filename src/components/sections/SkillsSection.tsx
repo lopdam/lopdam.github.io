@@ -23,7 +23,7 @@ export function SkillsSection() {
           </div>
         </BlurFade>
 
-        <div className="relative mb-12 overflow-hidden">
+        <div className="relative mb-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
           <Marquee pauseOnHover className="[--duration:20s]">
             {firstRow.map((skill) => (
               <Badge
@@ -46,8 +46,6 @@ export function SkillsSection() {
               </Badge>
             ))}
           </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-background"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-background"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

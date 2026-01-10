@@ -12,7 +12,7 @@ import { Building2 } from "lucide-react";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 px-4 bg-muted/30">
+    <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <BlurFade delay={0.1}>
           <div className="text-center mb-12">

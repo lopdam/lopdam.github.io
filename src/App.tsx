@@ -4,10 +4,12 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { TimelineSection } from "@/components/sections/TimelineSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { LiquidBackground } from "@/components/ui/liquid-background";
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <LiquidBackground />
       <Navigation />
       <main>
         <HeroSection />

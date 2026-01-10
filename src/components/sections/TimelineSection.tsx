@@ -21,7 +21,7 @@ export function TimelineSection() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-border" />
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/10" />
 
           <div className="space-y-8">
             {timeline.map((item, index) => (
@@ -32,7 +32,7 @@ export function TimelineSection() {
                   } flex-row`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background transform -translate-x-1/2 z-10" />
+                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white/10 shadow-[0_0_10px_rgba(var(--primary),0.5)] transform -translate-x-1/2 z-10" />
 
                   {/* Content */}
                   <div className="ml-16 md:ml-0 md:w-5/12">

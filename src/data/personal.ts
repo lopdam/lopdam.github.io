@@ -6,7 +6,7 @@ export const personalInfo: PersonalInfo = {
   tagline: "Specializing in Flutter, React Native, React & Python",
   bio: "Passionate Software Engineer with 4+ years of experience building scalable and user-friendly mobile applications that empower people and organizations. Dedicated to delivering high-quality, tested code while creating solutions that generate real impact for users and businesses.",
   location: "Ecuador",
-  email: "contact@example.com", // Replace with actual email
+  email: "dennyslopez2013@gmail.com",
   availability: "Open to new opportunities",
   languages: ["Spanish (Native - C2)", "English (Advanced - B2)"]
 };
@@ -24,7 +24,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     platform: "Email",
-    url: "mailto:contact@example.com", // Replace with actual email
+    url: "mailto:dennyslopez2013@gmail.com",
     icon: "Mail"
   }
 ];
