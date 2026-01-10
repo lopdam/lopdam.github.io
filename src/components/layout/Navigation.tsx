@@ -1,38 +1,45 @@
 import { useState, useEffect } from "react";
 import { flushSync } from "react-dom";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-scroll";
-import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import {
+  Home,
+  Code2,
+  FolderGit2,
+  CalendarDays,
+  Mail,
+  Sun,
+  Moon,
+} from "lucide-react";
+
+import { Dock, DockIcon } from "@/components/ui/dock";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", to: "home" },
-  { name: "Skills", to: "skills" },
-  { name: "Projects", to: "projects" },
-  { name: "Timeline", to: "timeline" },
-  { name: "Contact", to: "contact" },
+  { name: "Home", to: "home", icon: Home },
+  { name: "Skills", to: "skills", icon: Code2 },
+  { name: "Projects", to: "projects", icon: FolderGit2 },
+  { name: "Timeline", to: "timeline", icon: CalendarDays },
+  { name: "Contact", to: "contact", icon: Mail },
 ];
 
 export function Navigation() {
   const [activeSection, setActiveSection] = useState("home");
   const [isDark, setIsDark] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Set dark mode by default
-    document.documentElement.classList.add("dark");
+    if (!document.documentElement.classList.contains("dark") && !document.documentElement.classList.contains("light")) {
+         document.documentElement.classList.add("dark");
+    }
+    setIsDark(document.documentElement.classList.contains("dark"));
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      // Simple scroll spy
       const sections = navItems.map((item) => item.to);
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
+          if (rect.top <= 300 && rect.bottom >= 300) {
             setActiveSection(section);
             break;
           }
@@ -89,103 +96,42 @@ export function Navigation() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen
-          ? "bg-white/5 dark:bg-black/5 backdrop-blur-xl border-b border-white/10 dark:border-white/5 shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+      <Dock className="bg-white/80 dark:bg-black/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-2xl">
+        {navItems.map((item) => (
+          <DockIcon key={item.to} magnification={60} distance={100}>
             <Link
-              to="home"
+              to={item.to}
               smooth={true}
               duration={500}
-              className="text-xl font-bold cursor-pointer bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
-            >
-              DLD
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-70}
-              >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className={`cursor-pointer transition-all duration-300 rounded-full px-5 ${
-                    activeSection === item.to
-                      ? "bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.15)] text-foreground scale-105 font-medium"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                  }`}
-                >
-                  {item.name}
-                </Button>
-              </Link>
-            ))}
-            <div className="ml-2">
-              <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="rounded-full hover:bg-white/10"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
+              spy={true}
+              offset={-70}
+              onSetActive={() => setActiveSection(item.to)}
+              className={cn(
+                "flex items-center justify-center w-full h-full rounded-full transition-colors duration-300",
+                activeSection === item.to
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               )}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/10 bg-white/5 backdrop-blur-xl absolute left-0 right-0 shadow-xl rounded-b-2xl">
-            <div className="flex flex-col gap-2 px-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  offset={-70}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Button
-                    variant="ghost"
-                    className={`w-full justify-start cursor-pointer rounded-xl ${
-                      activeSection === item.to
-                        ? "bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                    }`}
-                  >
-                    {item.name}
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+              aria-label={item.name}
+            >
+              <item.icon className="size-full" />
+            </Link>
+          </DockIcon>
+        ))}
+        <Separator orientation="vertical" className="h-8 mx-1 bg-black/10 dark:bg-white/20" />
+        <DockIcon magnification={60} distance={100}>
+          <button
+            onClick={toggleTheme}
+            className={cn(
+              "flex items-center justify-center w-full h-full rounded-full text-muted-foreground hover:text-foreground transition-colors duration-300"
+            )}
+            aria-label="Toggle theme"
+          >
+            {isDark ? <Sun className="size-full" /> : <Moon className="size-full" />}
+          </button>
+        </DockIcon>
+      </Dock>
+    </div>
   );
 }
