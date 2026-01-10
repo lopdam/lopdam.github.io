@@ -80,9 +80,13 @@ export function Navigation() {
                 offset={-70}
               >
                 <Button
-                  variant={activeSection === item.to ? "default" : "ghost"}
+                  variant="ghost"
                   size="sm"
-                  className="cursor-pointer"
+                  className={`cursor-pointer transition-all duration-300 rounded-full px-5 ${
+                    activeSection === item.to
+                      ? "bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.15)] text-foreground scale-105 font-medium"
+                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                  }`}
                 >
                   {item.name}
                 </Button>
@@ -92,7 +96,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="ml-2"
+              className="ml-2 rounded-full hover:bg-white/10"
             >
               {isDark ? (
                 <Sun className="w-4 h-4" />
@@ -108,6 +112,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
+              className="rounded-full hover:bg-white/10"
             >
               {isDark ? (
                 <Sun className="w-4 h-4" />
@@ -119,6 +124,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="rounded-full hover:bg-white/10"
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -131,8 +137,8 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-2">
+          <div className="md:hidden py-4 border-t border-white/10 bg-white/5 backdrop-blur-xl absolute left-0 right-0 shadow-xl rounded-b-2xl">
+            <div className="flex flex-col gap-2 px-4">
               {navItems.map((item) => (
                 <Link
                   key={item.to}
@@ -144,8 +150,12 @@ export function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Button
-                    variant={activeSection === item.to ? "default" : "ghost"}
-                    className="w-full justify-start cursor-pointer"
+                    variant="ghost"
+                    className={`w-full justify-start cursor-pointer rounded-xl ${
+                      activeSection === item.to
+                        ? "bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg text-foreground font-medium"
+                        : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    }`}
                   >
                     {item.name}
                   </Button>
