@@ -16,8 +16,10 @@ function App() {
         <TimelineSection />
         <ContactSection />
       </main>
-      <footer className="py-8 text-center text-sm text-muted-foreground border-t">
-        <p>© 2026 Dennys Lopez Damian</p>
+      <footer className="py-6">
+        <p className="text-center text-xs text-muted-foreground">
+          © 2026 Dennys Lopez Damian
+        </p>
       </footer>
     </div>
   );

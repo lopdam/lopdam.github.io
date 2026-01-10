@@ -1,8 +1,11 @@
 import { personalInfo } from "@/data/personal";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, MessageCircle, Mail } from "lucide-react";
+import { MessageCircle, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { Terminal, TypingAnimation, AnimatedSpan } from "@/components/ui/terminal";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { NumberTicker } from "@/components/ui/number-ticker";
 
 export function HeroSection() {
   return (
@@ -15,33 +18,30 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          <AnimatedGradientText className="text-5xl md:text-7xl font-bold">
             {personalInfo.name}
-          </h1>
+          </AnimatedGradientText>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex justify-center mb-12 w-full"
         >
-          <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-foreground">
-            {personalInfo.role}
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground mb-6">
-            {personalInfo.tagline}
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            {personalInfo.bio}
-          </p>
+          <Terminal className="w-full max-w-3xl font-mono text-left shadow-2xl">
+            <TypingAnimation duration={30} className="text-primary font-semibold text-base md:text-lg mb-4">
+              {personalInfo.role}
+            </TypingAnimation>
+            <TypingAnimation duration={25} className="text-muted-foreground text-sm md:text-base mb-5">
+              {personalInfo.tagline}
+            </TypingAnimation>
+            <TypingAnimation duration={20} className="text-foreground leading-relaxed text-sm md:text-base">
+              Passionate Software Engineer with 4+ years of experience building scalable and user-friendly mobile applications that empower people and organizations. Dedicated to delivering high-quality, tested code while creating solutions that generate real impact for users and businesses.
+            </TypingAnimation>
+          </Terminal>
         </motion.div>
 
         <motion.div
@@ -50,7 +50,6 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-wrap gap-4 justify-center"
         >
-
           <Button size="lg" variant="outline" className="gap-2" asChild>
             <a
               href="https://wa.me/593985349480"
@@ -71,23 +70,6 @@ export function HeroSection() {
               <Mail className="w-4 h-4" />
               Contact Me
             </Button>
-          </Link>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <Link to="skills" smooth={true} duration={500}>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="cursor-pointer"
-            >
-              <ArrowDown className="w-6 h-6 text-muted-foreground" />
-            </motion.div>
           </Link>
         </motion.div>
       </div>

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { MessageCircle, Github, Linkedin, Mail } from "lucide-react";
+import { Dock, DockIcon } from "@/components/ui/dock";
 
 const iconMap = {
   Github,
@@ -53,43 +54,36 @@ export function ContactSection() {
                   </p>
                 </div>
 
-                <div className="pt-4">
-                  <div className="flex flex-wrap gap-4 justify-center">
+                <div className="pt-8 pb-4">
+                  <Dock direction="middle">
+                    <DockIcon>
+                      <a
+                        href="https://wa.me/593985349480"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-full h-full"
+                        aria-label="WhatsApp"
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                      </a>
+                    </DockIcon>
                     {socialLinks.map((link) => {
                       const Icon = iconMap[link.icon as keyof typeof iconMap];
                       return (
-                        <Button
-                          key={link.platform}
-                          variant="outline"
-                          size="lg"
-                          className="gap-2"
-                          asChild
-                        >
+                        <DockIcon key={link.platform}>
                           <a
                             href={link.url}
                             target={link.platform !== "Email" ? "_blank" : undefined}
                             rel={link.platform !== "Email" ? "noopener noreferrer" : undefined}
+                            className="flex items-center justify-center w-full h-full"
+                            aria-label={link.platform}
                           >
-                            <Icon className="w-4 h-4" />
-                            {link.platform}
+                            <Icon className="w-5 h-5" />
                           </a>
-                        </Button>
+                        </DockIcon>
                       );
                     })}
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t">
-                  <Button size="lg" className="gap-2 w-full md:w-auto" asChild>
-                    <a
-                      href="https://wa.me/593985349480"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Chat on WhatsApp
-                    </a>
-                  </Button>
+                  </Dock>
                 </div>
               </div>
             </CardContent>
