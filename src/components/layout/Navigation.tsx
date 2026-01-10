@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { flushSync } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-scroll";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navItems = [
   { name: "Home", to: "home" },
@@ -42,9 +44,48 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
+  const toggleTheme = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    // @ts-ignore
+    if (!document.startViewTransition) {
+      setIsDark(!isDark);
+      document.documentElement.classList.toggle("dark");
+      return;
+    }
+
+    const x = e.clientX;
+    const y = e.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    );
+
+    // @ts-ignore
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setIsDark(!isDark);
+        document.documentElement.classList.toggle("dark");
+      });
+    });
+
+    await transition.ready;
+
+    const clipPath = [
+      `circle(0px at ${x}px ${y}px)`,
+      `circle(${endRadius}px at ${x}px ${y}px)`,
+    ];
+
+    document.documentElement.animate(
+      {
+        clipPath: isDark ? clipPath : [...clipPath].reverse(),
+      },
+      {
+        duration: 500,
+        easing: "ease-in-out",
+        pseudoElement: isDark
+          ? "::view-transition-new(root)"
+          : "::view-transition-old(root)",
+      }
+    );
   };
 
   return (
@@ -92,34 +133,14 @@ export function Navigation() {
                 </Button>
               </Link>
             ))}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="ml-2 rounded-full hover:bg-white/10"
-            >
-              {isDark ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
-            </Button>
+            <div className="ml-2">
+              <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+            </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full hover:bg-white/10"
-            >
-              {isDark ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
-            </Button>
+            <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
             <Button
               variant="ghost"
               size="icon"
