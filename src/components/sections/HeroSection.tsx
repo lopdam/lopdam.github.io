@@ -1,11 +1,10 @@
 import { personalInfo } from "@/data/personal";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import { Terminal, TypingAnimation, AnimatedSpan } from "@/components/ui/terminal";
+import { Terminal, TypingAnimation } from "@/components/ui/terminal";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
-import { NumberTicker } from "@/components/ui/number-ticker";
 
 export function HeroSection() {
   return (

@@ -8,7 +8,7 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 export const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min;
@@ -46,7 +46,7 @@ function ParallaxText({
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
     /**

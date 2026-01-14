@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { MessageCircle, Github, Linkedin, Mail, Calendar } from "lucide-react";
+import { Github, Linkedin, Mail, Calendar } from "lucide-react";
 import { Dock, DockIcon } from "@/components/ui/dock";
 
 const iconMap = {
