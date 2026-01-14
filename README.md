@@ -357,6 +357,25 @@ Animated blob shapes for dynamic backgrounds.
 
 ## Deployment
 
+### Live Site
+
+**https://lopdam.github.io**
+
+### Deploy to GitHub Pages (Current)
+
+This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
+
+1. **Enable GitHub Pages** in your repo settings:
+   - Go to Settings → Pages
+   - Set Source to **GitHub Actions**
+
+2. **Push to main branch**:
+```bash
+git push origin main
+```
+
+The site will automatically build and deploy on each push to `main`.
+
 ### Deploy to Vercel (Recommended)
 
 1. **Install Vercel CLI**:
@@ -480,7 +499,7 @@ Special thanks to the open-source community for the amazing tools and libraries 
 
 **Dennys Lopez Damian**
 
-- Portfolio: [lopdam.com](https://lopdam.com) (add your URL)
+- Portfolio: [lopdam.github.io](https://lopdam.github.io)
 - GitHub: [@lopdam](https://github.com/lopdam) (add your GitHub)
 - LinkedIn: [dennys-lopez-damian](https://linkedin.com/in/dennys-lopez-damian) (add your LinkedIn)
 - Email: contact@lopdam.com (add your email)
