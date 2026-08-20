@@ -14,7 +14,7 @@ export function TimelineSection() {
               Career Journey
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              4+ years of professional experience building impactful solutions
+              5+ years of professional experience building impactful solutions
             </p>
           </div>
         </BlurFade>

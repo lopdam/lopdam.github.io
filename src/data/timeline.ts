@@ -5,7 +5,7 @@ export const timeline: TimelineItem[] = [
     id: "syntaxdev",
     company: "SYNTAXDEV S.A.S",
     role: "Software Engineer",
-    startDate: "Jan 2023",
+    startDate: "Jun 2023",
     endDate: "Present",
     responsibilities: [
       "Developed and maintained backend, web, and mobile platforms",
@@ -13,6 +13,19 @@ export const timeline: TimelineItem[] = [
       "Built scalable services using Python and JavaScript"
     ],
     techStack: ["Flutter", "React Native", "Python", "Django", "Flask"],
+    type: "work"
+  },
+  {
+    id: "crediclub",
+    company: "CREDICLUB - SuperTasas",
+    role: "Mobile Developer",
+    startDate: "Nov 2025",
+    endDate: "Apr 2026",
+    responsibilities: [
+      "Implemented features using Flutter for the SuperTasas Fintech app",
+      "Ensured high code quality through rigorous unit testing"
+    ],
+    techStack: ["Flutter"],
     type: "work"
   },
   {
@@ -80,6 +93,16 @@ export const timeline: TimelineItem[] = [
     startDate: "Mar 2017",
     endDate: "Feb 2022",
     responsibilities: ["Completed Bachelor of Science in Computer Science"],
+    techStack: [],
+    type: "education"
+  },
+  {
+    id: "udla-msc",
+    company: "UDLA",
+    role: "MSc in Project Management",
+    startDate: "2025",
+    endDate: "Present",
+    responsibilities: ["Pursuing Master's degree in Project Management"],
     techStack: [],
     type: "education"
   }
