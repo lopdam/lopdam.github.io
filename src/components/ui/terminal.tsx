@@ -238,8 +238,8 @@ export const Terminal = ({
           <div className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-green-500"></div>
         </div>
       </div>
-      <div className="p-4 md:p-6 overflow-x-auto">
-        <div className="grid gap-y-1 min-w-0">{wrappedChildren}</div>
+      <div className="p-4 md:p-6 overflow-x-hidden">
+        <div className="grid gap-y-1 min-w-0 break-words">{wrappedChildren}</div>
       </div>
     </div>
   )

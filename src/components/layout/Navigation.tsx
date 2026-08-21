@@ -9,6 +9,7 @@ import {
   Mail,
   Sun,
   Moon,
+  Download,
 } from "lucide-react";
 
 import { Dock, DockIcon } from "@/components/ui/dock";
@@ -96,10 +97,15 @@ export function Navigation() {
   };
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-      <Dock className="bg-white/80 dark:bg-black/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-2xl">
+    <div className="fixed bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-1.5rem)]">
+      <Dock
+        iconSize={34}
+        iconMagnification={48}
+        iconDistance={100}
+        className="mt-0 max-w-full bg-white/80 dark:bg-black/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-2xl"
+      >
         {navItems.map((item) => (
-          <DockIcon key={item.to} magnification={60} distance={100}>
+          <DockIcon key={item.to}>
             <Link
               to={item.to}
               smooth={true}
@@ -120,7 +126,17 @@ export function Navigation() {
           </DockIcon>
         ))}
         <Separator orientation="vertical" className="h-8 mx-1 bg-black/10 dark:bg-white/20" />
-        <DockIcon magnification={60} distance={100}>
+        <DockIcon>
+          <a
+            href="/CV_LopezDamianDennys.pdf"
+            download="Dennys_Lopez_Damian_CV.pdf"
+            className="flex items-center justify-center w-full h-full rounded-full text-cta hover:text-cta/80 transition-colors duration-300"
+            aria-label="Download CV"
+          >
+            <Download className="size-full" />
+          </a>
+        </DockIcon>
+        <DockIcon>
           <button
             onClick={toggleTheme}
             className={cn(

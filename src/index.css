@@ -75,10 +75,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
   margin: 0;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  overflow-x: clip;
+  min-width: 0;
 }
 
 /* Custom scrollbar for dark theme */
@@ -154,4 +161,12 @@ body {
 
 .dark::view-transition-new(root) {
   z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation: none !important;
+  }
 }

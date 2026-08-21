@@ -22,15 +22,17 @@ interface VelocityScrollProps {
 }
 
 interface ParallaxProps {
-  children: string;
+  children: React.ReactNode;
   baseVelocity: number;
   className?: string;
+  repeat?: number;
 }
 
-function ParallaxText({
+export function ParallaxText({
   children,
   baseVelocity = 100,
   className,
+  repeat = 4,
 }: ParallaxProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -70,7 +72,7 @@ function ParallaxText({
       style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
     >
       <motion.div className={cn("inline-block", className)} style={{ x }}>
-        {Array.from({ length: 4 }).map((_, i) => (
+        {Array.from({ length: repeat }).map((_, i) => (
           <span key={i} className="mr-8">
             {children}
           </span>

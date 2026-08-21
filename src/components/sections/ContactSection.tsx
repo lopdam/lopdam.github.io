@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Github, Linkedin, Mail, Calendar } from "lucide-react";
 import { Dock, DockIcon } from "@/components/ui/dock";
+import { Magnet } from "@/components/ui/magnet";
 
 const iconMap = {
   Github,
@@ -19,8 +20,8 @@ export function ContactSection() {
   });
 
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section id="contact" className="py-16 md:py-20 px-4 overflow-x-clip">
+      <div className="max-w-4xl mx-auto min-w-0">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
@@ -28,14 +29,14 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-balance">
             Let's Connect
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 text-balance">
             {personalInfo.availability}
           </p>
 
-          <Card className="max-w-2xl mx-auto">
+          <Card className="max-w-2xl mx-auto hover:bg-white/10 transition-[background-color] duration-300">
             <CardContent className="pt-6">
               <div className="space-y-6">
                 <div>
@@ -93,20 +94,23 @@ export function ContactSection() {
                     </Dock>
                   </div>
 
-                  <Button
-                    size="lg"
-                    className="gap-2 w-full sm:w-auto"
-                    asChild
-                  >
-                    <a
-                      href="https://cal.com/lopdam/30min"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <Magnet padding={60} strength={4} className="w-full sm:w-auto">
+                    <Button
+                      size="lg"
+                      variant="cta"
+                      className="gap-2 w-full sm:w-auto"
+                      asChild
                     >
-                      <Calendar className="w-4 h-4" />
-                      Schedule a Meeting
-                    </a>
-                  </Button>
+                      <a
+                        href="https://cal.com/lopdam/30min"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Calendar className="w-4 h-4" />
+                        Schedule a Meeting
+                      </a>
+                    </Button>
+                  </Magnet>
                 </div>
               </div>
             </CardContent>
