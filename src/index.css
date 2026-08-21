@@ -106,6 +106,70 @@ body {
   background: hsl(var(--muted-foreground));
 }
 
+@layer components {
+  .spotlight-card {
+    --spotlight-x: 50%;
+    --spotlight-y: 50%;
+    --spotlight-color: var(--primary);
+    --spotlight-radius: 22rem;
+    --spotlight-fill-alpha: 0.12;
+    --spotlight-ring-alpha: 0.45;
+  }
+
+  .dark .spotlight-card {
+    --spotlight-fill-alpha: 0.16;
+    --spotlight-ring-alpha: 0.65;
+  }
+
+  .spotlight-layer {
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 220ms ease;
+  }
+
+  .spotlight-fill {
+    background: radial-gradient(
+      var(--spotlight-radius) circle at var(--spotlight-x) var(--spotlight-y),
+      hsl(var(--spotlight-color) / var(--spotlight-fill-alpha)),
+      transparent 70%
+    );
+  }
+
+  .spotlight-ring {
+    padding: 1px;
+    background: radial-gradient(
+      calc(var(--spotlight-radius) * 0.85) circle at var(--spotlight-x) var(--spotlight-y),
+      hsl(var(--spotlight-color) / var(--spotlight-ring-alpha)),
+      transparent 60%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  @supports not ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+    .spotlight-ring {
+      display: none;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight-card:hover > .spotlight-layer,
+    .spotlight-card:focus-within > .spotlight-layer {
+      opacity: 1;
+    }
+  }
+}
+
 @theme inline {
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
@@ -168,5 +232,8 @@ body {
   .animate-marquee,
   .animate-marquee-vertical {
     animation: none !important;
+  }
+  .spotlight-layer {
+    transition: none;
   }
 }

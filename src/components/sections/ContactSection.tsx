@@ -1,6 +1,7 @@
 import { personalInfo, socialLinks } from "@/data/personal";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Github, Linkedin, Mail, Calendar } from "lucide-react";
@@ -36,7 +37,7 @@ export function ContactSection() {
             {personalInfo.availability}
           </p>
 
-          <Card className="max-w-2xl mx-auto hover:bg-white/10 transition-[background-color] duration-300">
+          <SpotlightCard className="max-w-2xl mx-auto hover:bg-white/10 transition-[background-color] duration-300">
             <CardContent className="pt-6">
               <div className="space-y-6">
                 <div>
@@ -114,7 +115,7 @@ export function ContactSection() {
                 </div>
               </div>
             </CardContent>
-          </Card>
+          </SpotlightCard>
         </motion.div>
       </div>
     </section>

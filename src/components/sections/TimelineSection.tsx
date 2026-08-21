@@ -2,7 +2,8 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { timeline } from "@/data/timeline";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Briefcase, GraduationCap } from "lucide-react";
 
@@ -48,12 +49,12 @@ export function TimelineSection() {
                   {/* Timeline dot */}
                   <div
                     aria-hidden="true"
-                    className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white/10 shadow-[0_0_10px_rgba(var(--primary),0.5)] transform -translate-x-1/2 z-10"
+                    className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white/10 shadow-[0_0_10px_hsl(var(--primary)/0.5)] transform -translate-x-1/2 z-10"
                   />
 
                   {/* Content */}
                   <div className="ml-14 sm:ml-16 md:ml-0 md:w-5/12 min-w-0">
-                    <Card className="hover:bg-white/10 hover:shadow-lg transition-[background-color,box-shadow] duration-300 overflow-hidden">
+                    <SpotlightCard className="hover:bg-white/10 hover:shadow-lg transition-[background-color,box-shadow] duration-300 overflow-hidden">
                       <CardContent className="pt-6">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           {item.type === "work" ? (
@@ -88,7 +89,7 @@ export function TimelineSection() {
                           </div>
                         )}
                       </CardContent>
-                    </Card>
+                    </SpotlightCard>
                   </div>
                 </div>
               </BlurFade>

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 import { projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { ProjectGlyph } from "@/components/ui/project-glyph";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Building2, ArrowUpRight } from "lucide-react";
@@ -32,7 +32,7 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
       style={{ top: `calc(5rem + ${index * 20}px)` }}
     >
       <motion.div style={{ scale }} className="w-full min-w-0">
-        <Card className="rounded-[28px] md:rounded-[40px] border-2 shadow-2xl p-5 sm:p-6 md:p-10 overflow-hidden">
+        <SpotlightCard className="rounded-[28px] md:rounded-[40px] border-2 shadow-2xl p-5 sm:p-6 md:p-10 overflow-hidden">
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6 md:mb-8">
             <div className="flex items-baseline gap-3 sm:gap-4 min-w-0">
               <span className="text-[clamp(2rem,6vw,5rem)] font-black font-heading text-primary/20 leading-none shrink-0">
@@ -83,7 +83,7 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
               className="w-32 h-32 md:w-40 md:h-40 shrink-0 mx-auto"
             />
           </div>
-        </Card>
+        </SpotlightCard>
       </motion.div>
     </div>
   );

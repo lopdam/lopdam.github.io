@@ -1,6 +1,7 @@
 import { skills, skillsByCategory } from "@/data/skills";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { ParallaxText } from "@/components/ui/scroll-based-velocity";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { SkillConstellation } from "@/components/ui/skill-constellation";
@@ -53,7 +54,7 @@ export function SkillsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skillsByCategory).map(([category, categorySkills], index) => (
             <BlurFade key={category} delay={0.2 + index * 0.1}>
-              <Card className="hover:bg-white/10 hover:shadow-lg transition-[background-color,box-shadow] duration-300">
+              <SpotlightCard className="hover:bg-white/10 hover:shadow-lg transition-[background-color,box-shadow] duration-300">
                 <CardHeader>
                   <CardTitle className="text-lg">{category}</CardTitle>
                 </CardHeader>
@@ -66,7 +67,7 @@ export function SkillsSection() {
                     ))}
                   </div>
                 </CardContent>
-              </Card>
+              </SpotlightCard>
             </BlurFade>
           ))}
         </div>
