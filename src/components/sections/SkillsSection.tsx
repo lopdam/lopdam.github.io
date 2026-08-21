@@ -27,7 +27,7 @@ export function SkillsSection() {
         </BlurFade>
 
         <div className="relative mb-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
-          <ParallaxText baseVelocity={20}>
+          <ParallaxText baseVelocity={2}>
             {firstRow.map((skill) => (
               <Badge
                 key={skill.id}
@@ -38,7 +38,7 @@ export function SkillsSection() {
               </Badge>
             ))}
           </ParallaxText>
-          <ParallaxText baseVelocity={-20} className="mt-4">
+          <ParallaxText baseVelocity={-2} className="mt-4">
             {secondRow.map((skill) => (
               <Badge
                 key={skill.id}
